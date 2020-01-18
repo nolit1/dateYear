@@ -1,0 +1,25 @@
+buildscript {
+  repositories {
+    maven {
+      url "https://plugins.gradle.org/m2/"
+    }
+  }
+  dependencies {
+    classpath "com.github.node-gradle:gradle-node-plugin:2.2.0"
+  }
+}
+
+plugins {
+  id "com.github.node-gradle.node" version "2.2.0"
+}
+apply plugin: "com.github.node-gradle.node"
+
+task hello() {
+    print 'hello, '
+}
+
+task helloWorld( type: NodeTask, dependsOn: 'npmInstall' ) {
+    script = file( 'src/node' )
+}
+
+task build( dependsOn: 'helloWorld' ) {}
