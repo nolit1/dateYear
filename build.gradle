@@ -14,10 +14,6 @@ plugins {
 }
 apply plugin: "com.github.node-gradle.node"
 
-task hello() {
-    print 'hello, '
-}
-
 task helloWorld( type: NodeTask, dependsOn: 'npmInstall' ) {
     script = file( 'src/node' )
 }
